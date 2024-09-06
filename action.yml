@@ -1,0 +1,10 @@
+name: "CreadorCraft-Maker"
+author: "Creadores Program"
+description: "Github Action to package your CreatorCraft game!"
+inputs:
+  path:
+    description: "directory where the game to be packaged is"
+    required: true
+runs:
+  using: "node16"
+  main: "index.js"
