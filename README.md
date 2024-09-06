@@ -1,2 +1,2 @@
-# CreadorCraft-Maker-GBA
+# CreadorCraft-Maker-GHA
 Github Action to package your CreatorCraft game!
