@@ -12,7 +12,7 @@ try{
 }
 //error Messages
 const errorMessages = {
-    inManifest: "\nError in manifest.json"
+    inManifest: "\nError in manifest.json",
     inFileNotFound: function(file){
       return "\nError "+file+" Not Found";
     }
