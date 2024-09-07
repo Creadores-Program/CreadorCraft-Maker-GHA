@@ -1,6 +1,6 @@
 name: "CreadorCraft-Maker"
 author: "Creadores Program"
-description: "Github Action to package your CreatorCraft game!"
+description: "Github Action to package your CreadorCraft game!"
 inputs:
   path:
     description: "directory where the game to be packaged is"

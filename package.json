@@ -1,0 +1,29 @@
+{
+    "name": "CreadorCraft-Maker",
+    "version": "1.0.0",
+    "description": "Github Action to package your CreatorCraft game!",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Trollhunters501/CreadorCraft-Maker-GHA.git"
+    },
+    "keywords": [
+      "github",
+      "action",
+      "node",
+      "CreadorCraft"
+    ],
+    "author": "Creadores Program",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/Trollhunters501/CreadorCraft-Maker-GHA/issues"
+    },
+    "homepage": "https://creadorcraft-maker.blogspot.com/",
+    "dependencies": {
+      "@actions/core": "^1.10.1",
+      "@actions/github": "^6.0.0",
+      "jszip": "^3.10.1",
+      "fs": "^0.0.1-security"
+    }
+  }
+  
