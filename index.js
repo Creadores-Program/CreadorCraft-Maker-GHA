@@ -3,7 +3,7 @@ console.info(prefix+"CreadorCraft Maker Action by Creadores Program ©2024");
 console.info(prefix+"Loading Libraries...");
 try{
   const { execSync } = require("child_process");
-  execSync("npm install", { stdio: "inherit", cwd: process.env.GITHUB_ACTION_REPOSITORY });
+  execSync("npm install", { stdio: "inherit", cwd: "/home/runner/work/_actions/Trollhunters501/CreadorCraft-Maker-GHA/1.0.0/" });
   const core = require('@actions/core');
   const github = require('@actions/github');
   const JSzip = require("jszip");
