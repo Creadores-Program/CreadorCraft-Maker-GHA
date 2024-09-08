@@ -46,8 +46,10 @@ try{
         throw new Error(prefix+"You need a main JS for the game!"+errorMessages.inManifest);
     }
     function VerifyAccess(dirs) {
-      fs.access(dirGame+"/"+dirs).catch(()=>{
-        throw new Error(prefix+errorMessages.inFileNotFound(dirs));
+      fs.readFile(dirGame+"/"+dirs, 'utf8', (errs, data)=>{
+        if(errs){
+          throw new Error(prefix+errorMessages.inFileNotFound(dirs));
+        }
       });
     }
     VerifyAccess(manifestCCG.mainHtml);
