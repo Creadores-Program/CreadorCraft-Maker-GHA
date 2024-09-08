@@ -88,10 +88,10 @@ try{
 }
 
   const sourceDir = dirGame;
-  if(!fs.existsSync(dirGame+"/gameBuild")){
-    fs.mkdirSync(dirGame+"/gameBuild");
+  if(!fs.existsSync("./gameBuildCCM")){
+    fs.mkdirSync("./gameBuildCCM");
   }
-  const outPath = dirGame+"/gameBuild/"+manifestCCG.name+" "+manifestCCG.version+".creadorcraftgame.zip";
+  const outPath = "./gameBuildCCM/"+manifestCCG.name+" "+manifestCCG.version+".creadorcraftgame.zip";
 
   zipDirectory(sourceDir, outPath);
   });
