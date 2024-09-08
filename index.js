@@ -46,11 +46,9 @@ try{
         throw new Error(prefix+"You need a main JS for the game!"+errorMessages.inManifest);
     }
     function VerifyAccess(dirs) {
-      fs.readFile(dirGame+"/"+dirs, 'utf8', (errs, data)=>{
-        if(errs){
-          throw new Error(prefix+errorMessages.inFileNotFound(dirs));
-        }
-      });
+      if(!fs.existsSync(dirGame+"/"+dirs)){
+        throw new Error(prefix+errorMessages.inFileNotFound(dirs));
+      }
     }
     VerifyAccess(manifestCCG.mainHtml);
     VerifyAccess(manifestCCG.mainJS);
@@ -90,6 +88,9 @@ try{
 }
 
   const sourceDir = dirGame;
+  if(!fs.existsSync(dirGame+"/gameBuild")){
+    fs.mkdirSync(dirGame+"/gameBuild");
+  }
   const outPath = dirGame+"/gameBuild/"+manifestCCG.name+" "+manifestCCG.version+".creadorcraftgame.zip";
 
   zipDirectory(sourceDir, outPath);
