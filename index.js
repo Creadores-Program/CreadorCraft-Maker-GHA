@@ -7,7 +7,7 @@ try{
   execSync("npm install", { stdio: "inherit", cwd: rute });
   var core = require('@actions/core');
   var github = require('@actions/github');
-  var JSZip = require("jszip");
+  var archiver = require('archiver');
   var fs = require("fs");
 }catch(error){
   console.error(error.stack || error.message);
@@ -70,40 +70,29 @@ try{
     if(manifestCCG.mainLat != null) VerifyAccess(manifestCCG.mainLat);
     console.info(prefix+"Verification Complete");
     console.info(prefix+"Packing...");
-    const zip = new JSZip();
-    function addFilesToZip(folderPath, zipFolder) {
-      const files = fs.readdirSync(folderPath);
+    function zipDirectory(sourceDir, outPath) {
+      const output = fs.createWriteStream(outPath);
+      const archive = archiver('zip', { zlib: { level: 9 } });
     
-      files.forEach(file => {
-        let fullPath = "";
-        if(folderPath != dirGame){
-          if(folderPath.startsWith(dirGame+"/")){
-            folderPath.replace(dirGame+"/", "");
-          }
-          fullPath = folderPath+"/"+file;
-        }else{
-          fullPath = file; 
-        }
-        const stat = fs.statSync(fullPath);
-    
-        if (stat.isDirectory()) {
-          addFilesToZip(fullPath, zipFolder);
-        } else {
-          const fileData = fs.readFileSync(fullPath);
-          zipFolder.file(file, fileData);
-        }
+      output.on('close', () => {
+        console.info(prefix+"Game "+manifestCCG.name+" "+manifestCCG.version+".creadorcraftgame.zip Build Correctly in "+outPath);
       });
-    }
-    addFilesToZip(dirGame, zip);
-    zip.generateAsync({ type: 'nodebuffer' })
-    .then(content => {
-      fs.writeFileSync(manifestCCG.name+" "+manifestCCG.version+'.creadorcraftgame.zip', content);
-      console.info(prefix+'Game '+manifestCCG.name+" "+manifestCCG.version+'.creadorcraftgame.zip Build Correctly');
-    })
-    .catch(err => {
-      console.error(prefix+"Game "+manifestCCG.name+" "+manifestCCG.version+'.creadorcraftgame.zip Build Fail');
-      throw err;
-    });
+    
+      archive.on('error', (err) => {
+        console.error(prefix+"Game "+manifestCCG.name+" "+manifestCCG.version+".creadorcraftgame.zip Build Fail");
+        throw err;
+      });
+    
+      archive.pipe(output);
+      archive.directory(sourceDir, false);
+
+  archive.finalize();
+}
+
+  const sourceDir = dirGame;
+  const outPath = dirGame+"/gameBuild/"+manifestCCG.name+" "+manifestCCG.version+".creadorcraftgame.zip";
+
+  zipDirectory(sourceDir, outPath);
   });
 }catch(error){
     console.error(error.stack || error.message);
