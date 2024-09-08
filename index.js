@@ -2,12 +2,18 @@ const prefix = "[CreadorCraft Maker] ";
 console.info(prefix+"CreadorCraft Maker Action by Creadores Program ©2024");
 console.info(prefix+"Loading Libraries...");
 try{
+  const os = require("os");
   const { execSync } = require("child_process");
-  execSync("npm install", { stdio: "inherit", cwd: "/home/runner/work/_actions/Trollhunters501/CreadorCraft-Maker-GHA/1.0.0/" });
-  const core = require('@actions/core');
-  const github = require('@actions/github');
-  const JSzip = require("jszip");
-  const fs = require("fs");
+  let rute = "";
+  switch(os.platform()){
+    default:
+      rute = "/home/runner/work/_actions/Trollhunters501/CreadorCraft-Maker-GHA/1.0.0/";
+  }
+  execSync("npm install", { stdio: "inherit", cwd: rute });
+  var core = require('@actions/core');
+  var github = require('@actions/github');
+  var JSzip = require("jszip");
+  var fs = require("fs");
 }catch(error){
   console.error(error.stack || error.message);
   core.setFailed(error.stack || error.message);
