@@ -2,20 +2,8 @@ const prefix = "[CreadorCraft Maker] ";
 console.info(prefix+"CreadorCraft Maker Action by Creadores Program ©2024");
 console.info(prefix+"Loading Libraries...");
 try{
-  const os = require("os");
   const { execSync } = require("child_process");
-  let rute = "";
-  switch(os.platform()){
-    case "win32":
-      rute = "D:/a/_actions/Trollhunters501/CreadorCraft-Maker-GHA/1.0.0/";
-      break;
-    case "darwin":
-      rute = "/Users/runner/work/_actions/Trollhunters501/CreadorCraft-Maker-GHA/1.0.0/";
-      break;
-    default:
-      rute = "/home/runner/work/_actions/Trollhunters501/CreadorCraft-Maker-GHA/1.0.0/";
-  }
-  console.info(__dirname);
+  let rute = __dirname.replaceAll("\\", "/")+"/";
   execSync("npm install", { stdio: "inherit", cwd: rute });
   var core = require('@actions/core');
   var github = require('@actions/github');
