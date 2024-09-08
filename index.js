@@ -7,7 +7,7 @@ try{
   execSync("npm install", { stdio: "inherit", cwd: rute });
   var core = require('@actions/core');
   var github = require('@actions/github');
-  var JSzip = require("jszip");
+  var JSZip = require("jszip");
   var fs = require("fs");
 }catch(error){
   console.error(error.stack || error.message);
