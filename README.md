@@ -44,6 +44,7 @@ myName/RepoGameName/src
    {
     "name": "TestName",
     "description": "Test game",
+    "version": "1.0.0",
     "mainHtml": "index.html",//dir main html file
     "mainCSS": "index.css",
     "mainJS": "index.js"
