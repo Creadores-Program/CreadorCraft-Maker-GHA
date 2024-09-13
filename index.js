@@ -39,8 +39,8 @@ try{
     if(manifestCCG.description == null){
         throw new Error(prefix+"You need a description for the game!"+errorMessages.inManifest);
     }
-    if((manifestCCG.description.trim().toLowerCase().indexOf("<script") != -1 || manifestCCG.description.trim().toLowerCase().indexOf("</script") != -1) || (manifestCCG.name.trim().toLowerCase().indexOf("<script") != -1 || manifestCCG.name.trim().toLowerCase().indexOf("</script") != -1)){
-      throw new Error(prefix+"Name or Description Invalid!"+errorMessages.inManifest);
+    if(((manifestCCG.description.trim().toLowerCase().indexOf("<script") != -1 || manifestCCG.description.trim().toLowerCase().indexOf("</script") != -1) || (manifestCCG.name.trim().toLowerCase().indexOf("<script") != -1 || manifestCCG.name.trim().toLowerCase().indexOf("</script") != -1)) || (manifestCCG.version.trim().toLowerCase().indexOf("<script") != -1 || manifestCCG.version.trim().toLowerCase().indexOf("</script") != -1)){
+      throw new Error(prefix+"Name, Version or Description Invalid!"+errorMessages.inManifest);
     }
     if(manifestCCG.mainHtml == null){
         throw new Error(prefix+"You need a main Html for the game!"+errorMessages.inManifest);
