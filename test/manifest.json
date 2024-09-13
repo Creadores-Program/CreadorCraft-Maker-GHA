@@ -1,0 +1,8 @@
+{
+  "name":"CreadorCraft Game",
+  "version":"1.0.0",
+  "description":"Un juego fantasma 👻",
+  "mainHtml":"index.html",
+  "mainCSS":"index.css",
+  "mainJS":"index.js"
+}
