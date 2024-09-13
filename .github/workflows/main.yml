@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: CreadorCraft-Maker
-        uses: ./CreadorCraft-Maker
+        uses: ./
         with:
-          path: './test'
+            path: './test'
