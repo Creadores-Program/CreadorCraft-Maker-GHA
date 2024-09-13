@@ -1,0 +1,13 @@
+name: NodejsCI
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test CreadorCraft Maker
+      - uses: ./CreadorCraft-Maker-GHA
+        with:
+          path: './test'
