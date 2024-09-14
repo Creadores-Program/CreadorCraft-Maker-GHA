@@ -6,7 +6,7 @@ inputs:
     description: "directory where the game to be packaged is"
     required: true
 runs:
-  using: "node20"
+  using: "node22"
   main: "index.js"
 branding:
   icon: "terminal"
