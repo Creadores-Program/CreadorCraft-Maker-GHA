@@ -55,3 +55,7 @@ myName/RepoGameName/src
    - index.js
 
 more info in Wiki!
+
+Made in Mexico.
+
+Creadores Program © 2024
