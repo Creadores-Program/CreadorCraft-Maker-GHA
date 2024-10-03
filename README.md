@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: CreadorCraft-Maker
-        uses: Creadores-Program/CreadorCraft-Maker-GHA@v1
+        uses: Creadores-Program/CreadorCraft-Maker-GHA@v1.1.0
         with:
           path: "./src"
       - name: Upload Artifact
