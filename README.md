@@ -14,10 +14,6 @@ You can now package your CreatorCraft game on Github!
 If you want to know how to create a game in CreadorCraft I recommend you check out the [CreadorCraft Maker wiki](https://creadorcraft-maker.blogspot.com/p/documentacionwiki.html) you can also run many programming languages for your game!
 
 ## Example Work
-You can transpile the code with .sb, .sb2 or .sb3 files
-
-You must first have a manifest.json in the target directory of your CreatorCraft game.
-### Available options:
 ```yml
 name: CI
 
@@ -30,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: CreadorCraft-Maker
-        uses: Creadores-Program/CreadorCraft-Maker-GHA@v1.1.0
+        uses: Creadores-Program/CreadorCraft-Maker-GHA@v1
         with:
           path: "./src"
       - name: Upload Artifact
