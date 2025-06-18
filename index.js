@@ -8,6 +8,7 @@ try{
   var core = require('@actions/core');
   var github = require('@actions/github');
   var archiver = require('archiver');
+  var { v4: uuidv4 } = require('uuid');
   var fs = require("fs");
 }catch(error){
   console.error(error.stack || error.message);
@@ -20,6 +21,9 @@ const errorMessages = {
       return "\nError "+file+" Not Found";
     }
 };
+function isValidUUID(uuid){
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(uuid);
+}
 console.info(prefix+"Done!");
 console.info(prefix+"Creating CreatorCraft Game...");
 var dirGame = core.getInput("path");
@@ -29,7 +33,16 @@ try{
     if(err){
         throw err;
     }
+    if(data.indexOf("{{RandomId}}") != -1){
+      let uuidGen = uuidv4();
+      console.info(prefix+"ID by Game: "+uuidGen);
+      data.replace("{{RandomId}}", uuidGen);
+      fs.writeFileSync(dirGame+"/manifest.json", data);
+    }
     manifestCCG = JSON.parse(data);
+    if(manifestCCG.uuid == null || !isValidUUID(manifestCCG.uuid)){
+      console.warn("Packaging Game in ALFA X mode");
+    }
     if(manifestCCG.name == null || manifestCCG.name.trim() == ""){
         throw new Error(prefix+"You need a name for the game!"+errorMessages.inManifest);
     }

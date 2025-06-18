@@ -4,5 +4,6 @@
   "description":"Un juego fantasma 👻",
   "mainHtml":"index.html",
   "mainCSS":"index.css",
-  "mainJS":"index.js"
+  "mainJS":"index.js",
+  "uuid": "{{RandomId}}"
 }
