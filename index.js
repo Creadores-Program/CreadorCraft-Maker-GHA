@@ -36,12 +36,12 @@ try{
     if(data.indexOf("{{RandomId}}") != -1){
       let uuidGen = uuidv4();
       console.info(prefix+"ID by Game: "+uuidGen);
-      data.replace("{{RandomId}}", uuidGen);
+      data = data.replace("{{RandomId}}", uuidGen);
       fs.writeFileSync(dirGame+"/manifest.json", data);
     }
     manifestCCG = JSON.parse(data);
     if(manifestCCG.uuid == null || !isValidUUID(manifestCCG.uuid)){
-      console.warn("Packaging Game in ALFA X mode");
+      console.warn(prefix+"Packaging Game in ALFA X mode");
     }
     if(manifestCCG.name == null || manifestCCG.name.trim() == ""){
         throw new Error(prefix+"You need a name for the game!"+errorMessages.inManifest);
